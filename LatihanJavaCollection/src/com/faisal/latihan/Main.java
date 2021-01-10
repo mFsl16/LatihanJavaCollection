@@ -1,5 +1,7 @@
 package com.faisal.latihan;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
         kontakList = new ArrayList<>();
         kontakList.add(new Kontak("Faisal", "0989767665", "faisal@gmail.com"));
+        kontakList.add(new Kontak("Yudha", "0897776656", "yudha@gmail.com"));
+        kontakList.add(new Kontak("Ence", "08977665667", "ence@gmail.com"));
         System.out.println("Selamat Datang di Aplikasi Kontak dan Pesan");
         menuUtama();
     }
@@ -48,39 +52,21 @@ public class Main {
 
             switch (pilihan) {
                 case 1:
-                    System.out.print("\t\tMasukan Nama  : ");
-                    String nama = scanner.next();
-                    System.out.print("\t\tMasukan No Hp : ");
-                    String noHp = scanner.next();
-                    System.out.print("\t\tMasukan email : ");
-                    String email = scanner.next();
-                    System.out.println("\t\tApakan anda ingin menyimpan kontak ? ");
-                    System.out.println("\t\t1. ya");
-                    System.out.println("\t\t2. tidak");
-                    System.out.print("Masukan Pilihan Anda : ");
-                    int konfirm = scanner.nextInt();
-
-                    if (konfirm == 1) {
-                        kontakList.add(new Kontak(nama, noHp, email));
-                        System.out.println("Kontak berhasil di simpan");
-                    } else {
-                        break;
-                    }
+                    MainFunction.tambahKontak(kontakList);
                     break;
                 case 2:
-                    boolean isGoback = false;
-                    while (!isGoback) {
-                        for (var kontak : kontakList) {
+                    MainFunction.lihatKontak(kontakList);
+                    break;
+                case 3:
+                    MainFunction.hapusKontak(kontakList);
+                    break;
+                case 4:
+                    System.out.println("Masukan nama kontak : ");
+                    String namaKontak = scanner.next();
+
+                    for (var kontak : kontakList) {
+                        if (kontak.cari(namaKontak)) {
                             kontak.detailKontak();
-                        }
-                        System.out.println("Apakah anda ingin kembali ?");
-                        System.out.println("1. ya");
-                        System.out.println("2. tidak");
-                        int kembali = scanner.nextInt();
-                        if (kembali == 1) {
-                            isGoback = true;
-                        } else {
-                            isGoback = false;
                         }
                     }
                     break;

@@ -22,6 +22,12 @@ public class Kontak {
         this.listPesan = new ArrayList<>();
     }
 
+    public boolean cari (String string) {
+        return this.nama.toLowerCase().contains(string.toLowerCase())
+                || this.nama.toUpperCase().contains(string.toUpperCase())
+                || this.nama.contains(string);
+    }
+
     public void detailKontak() {
         System.out.println("Nama    : " + this.nama);
         System.out.println("No Hp   : " + this.noHp);
