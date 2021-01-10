@@ -61,14 +61,7 @@ public class Main {
                     MainFunction.hapusKontak(kontakList);
                     break;
                 case 4:
-                    System.out.println("Masukan nama kontak : ");
-                    String namaKontak = scanner.next();
-
-                    for (var kontak : kontakList) {
-                        if (kontak.cari(namaKontak)) {
-                            kontak.detailKontak();
-                        }
-                    }
+                    MainFunction.cariKontak(kontakList);
                     break;
                 case 5:
                     isKembali = true;
