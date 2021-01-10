@@ -73,4 +73,15 @@ public class MainFunction {
             }
         }
     }
+
+    public static void cariKontak(ArrayList<Kontak> kontakList) {
+        System.out.print("Masukan nama kontak : ");
+        String namaKontak = scanner.next();
+
+        for (var kontak : kontakList) {
+            if (kontak.cari(namaKontak)) {
+                kontak.detailKontak();
+            }
+        }
+    }
 }
